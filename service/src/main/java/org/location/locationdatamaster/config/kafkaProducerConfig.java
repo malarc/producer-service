@@ -39,21 +39,11 @@ public class kafkaProducerConfig {
         return props;
     }
 
-/*    @Bean
-    public ProducerFactory<String, String> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfigs());
-    }*/
-
-
     @Bean
     public ReactiveKafkaProducerTemplate<String, String> reactiveKafkaProducerTemplate() {
         return new ReactiveKafkaProducerTemplate<>(SenderOptions.create(producerConfigs()));
     }
 
-/*    @Bean
-    public KafkaTemplate<String, String> kafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
-    }*/
 }
 
 
