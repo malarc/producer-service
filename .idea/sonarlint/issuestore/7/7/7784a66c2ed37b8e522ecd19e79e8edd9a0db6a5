@@ -1,0 +1,31 @@
+
+Q
+java:S3740!"/Provide the parametrized type for this generic.(“ðëÌúÿÿÿÿ8Ñ“¨Èº1
+z
+java:S1104"XMake destFilePath a static final constant or non-public and provide accessors if needed.(Ë”ÅÉøÿÿÿÿ8Ò“¨Èº1
+…
+java:S1104"cMake storageConnectionString a static final constant or non-public and provide accessors if needed.(”ä§Œþÿÿÿÿ8Ò“¨Èº1
+T
+java:S1444"2Make this "public static destFilePath" field final(Ë”ÅÉøÿÿÿÿ8Ò“¨Èº1
+_
+java:S1444"=Make this "public static storageConnectionString" field final(”ä§Œþÿÿÿÿ8Ò“¨Èº1
+c
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(Ë”ÅÉøÿÿÿÿ8ä“¨Èº1
+]	java:S125"<This block of commented-out lines of code should be removed.(£òž¯ûÿÿÿÿ8å“¨Èº1
+Z	java:S106%"9Replace this use of System.out or System.err by a logger.(‚ÒÎŒüÿÿÿÿ8è“¨Èº1
+Z	java:S106)"9Replace this use of System.out or System.err by a logger.(‹þþÓøÿÿÿÿ8é“¨Èº1
+X	java:S125+"<This block of commented-out lines of code should be removed.(â°÷ß8è“¨Èº1
+Z	java:S1060"9Replace this use of System.out or System.err by a logger.(÷ž……øÿÿÿÿ8É¶ªÈº1
+U	java:S1064"9Replace this use of System.out or System.err by a logger.(±³Ñ¼8ªÇýÎº1
+U	java:S1069"9Replace this use of System.out or System.err by a logger.(±©ñÍ8«ÇýÎº1
+h
+java:S1128"LRemove this unused import 'com.azure.storage.blob.BlobContainerAsyncClient'.(ÒöûS8éÒ™ëº1
+F
+java:S1128	")Remove this unused import 'java.io.File'.(†Ð¥Å8®–Ñº1
+L
+java:S1128"/Remove this unused import 'java.nio.file.Path'.(×²êÂ8¯–Ñº1
+Q
+java:S1068"4Remove this unused "azureFileService" private field.(µÑ¼­8ê“¨Èº1
+\
+java:S1068":Remove this unused "blobServiceAsyncClient" private field.(” Îÿÿÿÿÿ8éÒ™ëº1
+_secrets:S6338":Make sure this Azure Storage Account Key is not disclosed.(”ä§Œþÿÿÿÿ8 ôñÂº1

@@ -36,7 +36,7 @@ spring:
   banner:
     location: banner.txt
   application:
-    name: LocationDataMaster
+    name: lLocationDataMaster
   jackson:
     serialization:
       FAIL_ON_EMPTY_BEANS: false
