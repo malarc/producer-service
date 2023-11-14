@@ -12,6 +12,7 @@ import com.microsoft.azure.storage.StorageException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.location.locationdatamaster.config.AzureBlobConfig;
+
 import org.location.locationdatamaster.models.Location;
 import org.location.locationdatamaster.services.LocationService;
 import org.springframework.http.HttpStatus;
@@ -43,7 +44,6 @@ public class LocationDataController {
     private  AzureFileService azureFileService;
     private LocationService locationService;
 
-
     @PostMapping(path = "/location-data", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
@@ -59,6 +59,15 @@ public class LocationDataController {
       // return Mono.just(new ResponseEntity<String>(HttpStatus.OK));
       // return locationService.downloadAzureFiles(azureFileService.getAzureFileList());
         return locationService.downloadBlobFiles(azureFileService.getAzureFileList());
+    }
+
+    @GetMapping(path = "/consumer/location-data", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<String> getKafkamessages(@RequestParam(value = "consumer") String downLoad){
+
+        // return Mono.just(new ResponseEntity<String>(HttpStatus.OK));
+        // return locationService.downloadAzureFiles(azureFileService.getAzureFileList());
+      //  return kafkaConsumerService.consumeReactive();
+        return null;
     }
 
 
