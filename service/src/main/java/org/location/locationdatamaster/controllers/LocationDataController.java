@@ -44,33 +44,10 @@ public class LocationDataController {
     private  AzureFileService azureFileService;
     private LocationService locationService;
 
-    @PostMapping(path = "/location-data", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<ResponseEntity> saveLocationData(@RequestParam(name = "billOfLadingId") String billOfLadingId) {
-        log.info("Received data ");
-
-        return null;
-    }
-
     @GetMapping(path = "/producer/location-data", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Flux<Location> getBlobFile(@RequestParam(value = "downLoad") String downLoad){
-
-      // return Mono.just(new ResponseEntity<String>(HttpStatus.OK));
-      // return locationService.downloadAzureFiles(azureFileService.getAzureFileList());
+    public Flux<Location> getBlobFile(@RequestParam(value = "publish") String publish){
         return locationService.downloadBlobFiles(azureFileService.getAzureFileList());
     }
-
-    @GetMapping(path = "/consumer/location-data", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Flux<String> getKafkamessages(@RequestParam(value = "consumer") String downLoad){
-
-        // return Mono.just(new ResponseEntity<String>(HttpStatus.OK));
-        // return locationService.downloadAzureFiles(azureFileService.getAzureFileList());
-      //  return kafkaConsumerService.consumeReactive();
-        return null;
-    }
-
-
 
 }
 
