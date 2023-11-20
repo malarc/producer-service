@@ -45,8 +45,9 @@ public class LocationDataController {
     private LocationService locationService;
 
     @GetMapping(path = "/producer/location-data", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Flux<Location> getBlobFile(@RequestParam(value = "publish") String publish){
-        return locationService.downloadBlobFiles(azureFileService.getAzureFileList());
+    public Flux<Location> downloadBlobFiles(@RequestParam(value = "publish") String publish){
+        List<String> fileList = azureFileService.getAzureFileList();
+        return locationService.downloadBlobFiles(fileList);
     }
 
 }
