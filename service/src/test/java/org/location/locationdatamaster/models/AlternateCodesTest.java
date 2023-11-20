@@ -25,5 +25,11 @@ public class AlternateCodesTest {
         Assertions.assertEquals(CODE_TYPE, alternateCodes.getCodeType(), "Invalid code type");
     }
 
+    @Test
+    public void testBuilder() {
+        alternateCodes = AlternateCodes.builder().code(CODE).codeType(CODE_TYPE).build();
+        Assertions.assertEquals(CODE, alternateCodes.getCode(), "Invalid code");
+        Assertions.assertEquals(CODE_TYPE, alternateCodes.getCodeType(), "Invalid code type");
+    }
 
 }
