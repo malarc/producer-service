@@ -18,7 +18,7 @@ jobs:
       uses: malarc/producer-service@v1.0
 
     - name: Set up Java
-      uses: actions/setup-java@v1.0
+      uses: malarc/producer-service@v1.0
       with:
         distribution: 'adopt'
         java-version: '11'
