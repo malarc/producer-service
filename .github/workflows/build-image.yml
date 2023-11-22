@@ -1,22 +1,30 @@
-name: 'Build image'
+name: build
 
 on:
-  workflow_dispatch:
-
-  pull_request:
-    branches:
-      - 'main'
-      - 'master'
-
   push:
     branches:
-      - 'main'
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  comment:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: producer-service
-        uses: malarc/producer-service@v1.0
-        with:
-          percentage: 100
+    - name: Checkout code
+      uses: malarc/producer-service@v1.0
+
+    - name: Set up Java
+      uses: actions/setup-java@v1.0
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn -B clean install
+
+    - name: Run Tests
+      run: mvn test
