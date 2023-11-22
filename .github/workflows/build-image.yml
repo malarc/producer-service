@@ -15,10 +15,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: malarc/producer-service@v1.0
+      uses: malarc/producer-service@main
 
     - name: Set up Java
-      uses: malarc/producer-service@v1.0
+      uses: malarc/producer-service@main
       with:
         distribution: 'adopt'
         java-version: '11'
