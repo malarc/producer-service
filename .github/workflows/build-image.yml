@@ -12,3 +12,19 @@ on:
     branches:
       - 'main'
 
+jobs:
+    build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+        # This steps checksout the code from our repository
+        - uses: actions/checkout@v2
+        # This step sets up Node.js version 12.x on the runner
+        - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+            node-version: 12.x
+        # Here we run npm install in CI mode to have clean package installs
+        - run: npm ci
+            # The demo I used is simple so we dont need to build it
+        # that's why I jumped directly into running the tests
+        - run: npm test
