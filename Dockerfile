@@ -7,7 +7,6 @@
 # CMD ["JFR.stop recording=0"]
 
 
-
 # Use an official Maven runtime as a parent image
 # FROM maven:3.8.4-openjdk-11-slim
 # WORKDIR /usr/src/app
@@ -18,25 +17,12 @@
 # RUN mvn package -DskipTests
 # CMD ["mvn", "test"]
 
-# Build stage
-# FROM maven:3.8.4-openjdk-11-slim AS build
-# WORKDIR /usr/src/app
-# COPY service /usr/src/app
-# COPY pom.xml  /usr/src/app
-# RUN mvn -f /usr/src/app/pom.xml clean test package
-#
-# # Package stage
-# FROM openjdk:11-jdk-oracle
-# COPY --from=build /home/app/target/*.jar app.jar
-# EXPOSE 8080
-# ENTRYPOINT ["java","-jar","app.jar"]
-# CMD ["mvn", "test"]
 
-FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
-MAINTAINER Brian Hannaway
-COPY pom.xml /build/
-COPY src /build/src/
+FROM maven:3.8.4-openjdk-11-slim AS MAVEN_BUILD
 WORKDIR /build/
+COPY pom.xml /build/
+COPY /service /build/src/
+
 RUN mvn package
 
 FROM openjdk:11-jdk-oracle
