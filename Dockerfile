@@ -24,7 +24,7 @@ RUN mvn dependency:go-offline
 #COPY . /src/target
 COPY .  /src/target
 
-ENTRYPOINT ["java", "-javaagent:dd-java-agent.jar", "-XX:MaxRAMPercentage=50.0", "-jar", "locationdatamaster.jar"]
+#ENTRYPOINT ["java", "-javaagent:dd-java-agent.jar", "-XX:MaxRAMPercentage=50.0", "-jar", "locationdatamaster.jar"]
 # Build the application
 RUN mvn package -DskipTests
 
