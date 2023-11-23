@@ -33,10 +33,10 @@ jobs:
 #      uses: actions/setup-node@v1
 
     - name: Install dependencies
-      run: npm install
+      run: mvn -B clean install
 
     - name: Run tests
-      run: npm test
+      run: mvn test
 
 #    - name: Build and test with Docker
 #      run: docker build -t locationdatamaster .
