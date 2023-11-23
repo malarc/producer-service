@@ -21,7 +21,7 @@
 # Build stage
 FROM maven:3.8.4-openjdk-11-slim AS build
 WORKDIR /usr/src/app
-COPY src /usr/src/app
+COPY service /usr/src/app
 COPY pom.xml  /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean test package
 
