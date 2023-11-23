@@ -21,7 +21,9 @@
 FROM maven:3.8.4-openjdk-11-slim AS MAVEN_BUILD
 WORKDIR /build/
 COPY pom.xml /build/
+
 COPY /service /build/src/
+COPY /service/pom.xml /build/src/
 
 RUN mvn package
 
