@@ -23,7 +23,7 @@ WORKDIR /build/
 COPY pom.xml /build/
 
 COPY /service /build
-COPY /service/pom.xml /build
+# COPY /service/pom.xml /build
 
 RUN mvn package
 
