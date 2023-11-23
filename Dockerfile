@@ -15,7 +15,7 @@ FROM maven:3.8.4-openjdk-11-slim
 WORKDIR /usr/src/app
 
 # Copy the POM file and download dependencies
-COPY pom.xml /src
+COPY pom.xml /usr/src/app
 RUN mvn dependency:go-offline
 
 # Copy the application source code
