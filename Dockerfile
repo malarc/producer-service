@@ -16,6 +16,8 @@ WORKDIR /usr/src/app
 
 # Copy the POM file and download dependencies
 COPY pom.xml /usr/src/app
+
+COPY /service/pom.xml /usr/src/app/service/pom.xml
 RUN mvn dependency:go-offline
 
 # Copy the application source code
