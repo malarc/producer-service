@@ -39,7 +39,7 @@ COPY src /build/src/
 WORKDIR /build/
 RUN mvn package
 
-FROM FROM openjdk:11-jdk-oracle
+FROM openjdk:11-jdk-oracle
 WORKDIR /app
 COPY --from=MAVEN_BUILD /build/target/docker-boot-intro-0.1.0.jar /app/
 ENTRYPOINT ["java", "-jar", "docker-boot-intro-0.1.0.jar"]
