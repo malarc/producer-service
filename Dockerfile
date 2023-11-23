@@ -37,7 +37,7 @@
 # Build stage
 #
 FROM maven:3.8.4-openjdk-11-slim AS build
-COPY src /home/app/src
+COPY /service /home/app/service
 COPY pom.xml /home/app
 RUN mvn -f /home/app/pom.xml clean package
 
