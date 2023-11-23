@@ -20,7 +20,7 @@ RUN mvn dependency:go-offline
 
 # Copy the application source code
 #COPY . /src/target
-COPY /usr/src/app/service/target/locatiodatamaster.jar /app/
+COPY /usr/src/app/service/ /src/target
 
 # Build the application
 RUN mvn package -DskipTests
