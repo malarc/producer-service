@@ -9,24 +9,25 @@
 
 
 # Use an official Maven runtime as a parent image
-FROM maven:3.8.4-openjdk-11-slim
+# FROM maven:3.8.4-openjdk-11-slim
+# WORKDIR /usr/src/app
+# COPY pom.xml /usr/src/app
+# COPY /service/pom.xml /usr/src/app/service/pom.xml
+# RUN mvn dependency:go-offline
+# COPY .  /src/target
+# RUN mvn package -DskipTests
+# CMD ["mvn", "test"]
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+# Build stage
+FROM maven:3.6.3-jdk-8-slim AS build
+WORKDIR /home/app
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean test package
 
-# Copy the POM file and download dependencies
-COPY pom.xml /usr/src/app
-
-COPY /service/pom.xml /usr/src/app/service/pom.xml
-RUN mvn dependency:go-offline
-
-# Copy the application source code
-#COPY . /src/target
-COPY .  /src/target
-
-#ENTRYPOINT ["java", "-javaagent:dd-java-agent.jar", "-XX:MaxRAMPercentage=50.0", "-jar", "locationdatamaster.jar"]
-# Build the application
-RUN mvn package -DskipTests
-
-# Run tests
+# Package stage
+FROM openjdk:11-jdk-oracle
+COPY --from=build /home/app/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]
 CMD ["mvn", "test"]
