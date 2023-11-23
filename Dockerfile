@@ -19,15 +19,27 @@
 # CMD ["mvn", "test"]
 
 # Build stage
-FROM maven:3.8.4-openjdk-11-slim AS build
-WORKDIR /usr/src/app
-COPY service /usr/src/app
-COPY pom.xml  /usr/src/app
-RUN mvn -f /usr/src/app/pom.xml clean test package
+# FROM maven:3.8.4-openjdk-11-slim AS build
+# WORKDIR /usr/src/app
+# COPY service /usr/src/app
+# COPY pom.xml  /usr/src/app
+# RUN mvn -f /usr/src/app/pom.xml clean test package
+#
+# # Package stage
+# FROM openjdk:11-jdk-oracle
+# COPY --from=build /home/app/target/*.jar app.jar
+# EXPOSE 8080
+# ENTRYPOINT ["java","-jar","app.jar"]
+# CMD ["mvn", "test"]
 
-# Package stage
-FROM openjdk:11-jdk-oracle
-COPY --from=build /home/app/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
-CMD ["mvn", "test"]
+FROM maven:3.5.2-jdk-8-alpine AS MAVEN_BUILD
+MAINTAINER Brian Hannaway
+COPY pom.xml /build/
+COPY src /build/src/
+WORKDIR /build/
+RUN mvn package
+
+FROM FROM openjdk:11-jdk-oracle
+WORKDIR /app
+COPY --from=MAVEN_BUILD /build/target/docker-boot-intro-0.1.0.jar /app/
+ENTRYPOINT ["java", "-jar", "docker-boot-intro-0.1.0.jar"]
