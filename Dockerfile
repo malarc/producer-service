@@ -19,11 +19,11 @@
 # CMD ["mvn", "test"]
 
 # Build stage
-FROM maven:3.6.3-jdk-8-slim AS build
-WORKDIR /home/app
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean test package
+FROM maven:3.8.4-openjdk-11-slim AS build
+WORKDIR /usr/src/app
+COPY src /usr/src/app
+COPY pom.xml  /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean test package
 
 # Package stage
 FROM openjdk:11-jdk-oracle
