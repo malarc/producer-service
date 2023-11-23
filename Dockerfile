@@ -20,8 +20,9 @@ RUN mvn dependency:go-offline
 
 # Copy the application source code
 #COPY . /src/target
-COPY /usr/src/app/service/ /src/target
+COPY .  /src/target
 
+ENTRYPOINT ["java", "-javaagent:dd-java-agent.jar", "-XX:MaxRAMPercentage=50.0", "-jar", "locationdatamaster.jar"]
 # Build the application
 RUN mvn package -DskipTests
 
