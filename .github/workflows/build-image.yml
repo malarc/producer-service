@@ -1,42 +1,34 @@
-name: build
+name: Build sample Java Maven project
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
+  compile:
+  # compile job
+
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-20.04
+    needs: compile
+    name: Build the Maven Project
     steps:
-    - name: Checkout code
-      uses: malarc/producer-service@main
-
-#    - name: Set up Java
-#      uses: malarc/producer-service@main
-#      with:
-#        distribution: 'adopt'
-#        java-version: '11'
-#
-#    - name: Build with Maven
-#      run: mvn -B clean install
-#
-#    - name: Run Tests
-#      run: mvn test
-
-#    - name: Set up node
-#      uses: actions/setup-node@v1
-
-    - name: Install dependencies
-      run: mvn -B clean install
-
-    - name: Run tests
-      run: mvn test
-
-#    - name: Build and test with Docker
-#      run: docker build -t locationdatamaster .
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+          java-package: jdk
+      - name: Build and test project
+        working-directory: github-actions-java-maven
+        run: mvn -B verify
+      - name: Upload Maven build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact.jar
+          path: github-actions-java-maven/target/github-actions-java-maven.jar
