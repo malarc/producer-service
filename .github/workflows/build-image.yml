@@ -1,4 +1,4 @@
-name: Build and deployusing Github actions
+name: Build and deploy using Github actions
 
 on:
   push:
