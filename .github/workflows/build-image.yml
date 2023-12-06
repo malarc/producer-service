@@ -1,4 +1,4 @@
-name: Build and deploy to Azure App Service
+name: Build and deployusing Github actions
 
 on:
   push:
