@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Data
-@ConfigurationProperties("azure.mdoblob")
+@ConfigurationProperties("azure.blob")
 @Configuration
 public class AzureBlobConfig {
     private String connectionString;

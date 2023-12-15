@@ -34,17 +34,17 @@ spring:
 
 
 azure:
-  mdoblob:
-    connectionString: DefaultEndpointsProtocol=https;AccountName=locationmaster;AccountKey=HCuKWNJWk51o+KiXK88ynl8KyNqTImPXxTi7YYGsSFf8Y83vfHw/DUoWZv6vcmj9jAOLTcycj/1E+ASt5Izenw==;EndpointSuffix=core.windows.net
-
-    containerName: locationmasterdatacontainer
+  blob:
+    #connectionString: DefaultEndpointsProtocol=https;AccountName=locationmaster;AccountKey=HCuKWNJWk51o+KiXK88ynl8KyNqTImPXxTi7YYGsSFf8Y83vfHw/DUoWZv6vcmj9jAOLTcycj/1E+ASt5Izenw==;EndpointSuffix=core.windows.net
+    connectionString:  DefaultEndpointsProtocol=https;AccountName=locationpocstorage;AccountKey=krJ9WTVgPbsSBhIUvwI4BkxiWmiB4zdNYpTXZ/vNO0ZVa2rAExlo9sGvzpK6KDDiAZdejhgkvUD2+AStIDvj/g==;EndpointSuffix=core.windows.net
+    containerName: locationpoccontainer
     blobName: locationmaster
 
 
 producer-kafka-config:
-  bootstrap-servers: pkc-6ojv2.us-west4.gcp.confluent.cloud:9092
-  username: YGZWSL4IE7B7EUKG
-  password: yXBPPcK4ZIHRII0ybeGpFaXsLDJn8HBFHLnvgkJC8SApSQ46mhyR/NnOmbzVu0WF
+  bootstrap-servers: pkc-4r087.us-west2.gcp.confluent.cloud:9092
+  username: KNGLYLYVX4UYIZN5
+  password: 0vYFQj2zSwVLVLgemUcWVAHy/i2FR0YzMXC757dV/kRE+W7idYFMCfId6rHkE6uK
   clientId: locationData
   topic: apmm.locationref.topic.internal.any.v1
 
