@@ -39,7 +39,7 @@ env:
   CONTAINER_NAME: "producer-service"
   RESOURCE_GROUP: "locationrg"
   CLUSTER_NAME: "locationpocaks"
-  DEPLOYMENT_MANIFEST_PATH: "./deployment.yml"
+  DEPLOYMENT_MANIFEST_PATH: "./Deployment.yml"
 
 jobs:
   buildImage:
